@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,12 +13,9 @@ public class DatosPersonales extends JFrame {
     private JComboBox JcomboBoxGenero;
     private JButton JbuttonMostrar;
     private JButton JButtonLimpiar;
-    private JRadioButton JradioSoltero;
-    private JRadioButton JradioCasado;
+    private JRadioButton solteroRadioButton;
+    private JRadioButton casadoRadioButton;
     private JCheckBox JcheckboxTieneHijos;
-
-
-
     public DatosPersonales()  {
         setContentPane(JpanelDatos);
         setTitle("Bienvenido a Datos Personales");
@@ -42,18 +38,17 @@ public class DatosPersonales extends JFrame {
         });
 
         ButtonGroup estadoCivilGroup = new ButtonGroup();
-        JradioSoltero = new JRadioButton("Soltero");
-        JradioCasado = new JRadioButton("Casado");
-        estadoCivilGroup.add(JradioSoltero);
-        estadoCivilGroup.add(JradioCasado);
+        solteroRadioButton = new JRadioButton("Soltero");
+        casadoRadioButton = new JRadioButton("Casado");
+        estadoCivilGroup.add(solteroRadioButton);
+        estadoCivilGroup.add(casadoRadioButton);
 
         JcheckboxTieneHijos = new JCheckBox("Tiene hijos");
 
-        JpanelDatos.add(JradioSoltero);
-        JpanelDatos.add(JradioCasado);
+        JpanelDatos.add(solteroRadioButton);
+        JpanelDatos.add(casadoRadioButton);
         JpanelDatos.add(JcheckboxTieneHijos);
     }
-
     //Método que permita mostrar los datos formulario
     private void mostrarDatos(){
         String pnombre="";
@@ -83,9 +78,7 @@ public class DatosPersonales extends JFrame {
 
         JOptionPane.showMessageDialog(null, mensaje);
         limpiar();
-
     }
-
     //Método Para cualquier combobox // genero
     private String mostrarGenero(){
         String msj="";
@@ -103,7 +96,6 @@ public class DatosPersonales extends JFrame {
         }
         return msj;
     }
-
     ///Metodo de limpiar
     private void limpiar(){
         JtextFieldPNombre.setText("");
@@ -112,28 +104,23 @@ public class DatosPersonales extends JFrame {
         JtextFieldSApellido.setText("");
 
         // Limpiar los radio buttons y el checkbox
-        JradioSoltero.setSelected(false);
-        JradioCasado.setSelected(false);
+        solteroRadioButton.setSelected(false);
+        casadoRadioButton.setSelected(false);
         JcheckboxTieneHijos.setSelected(false);
 
         JcomboBoxGenero.setSelectedIndex(0);
     }
-
     // Método para obtener el estado civil seleccionado
     private String mostrarEstadoCivil() {
-        if (JradioSoltero.isSelected()) {
+        if (solteroRadioButton.isSelected()) {
             return "Soltero";
-        } else if (JradioCasado.isSelected()) {
+        } else if (casadoRadioButton.isSelected()) {
             return "Casado";
         } else {
             return "No especificado";
         }
     }
-
     //Método ejecución
     public static void main(String[] args) {
         DatosPersonales d = new DatosPersonales();
-    }
-
-
-}
+    }}
